@@ -10,31 +10,35 @@
 <body>
 
     <form class="w-75 mx-auto">
-        <select name="taype" required>
-	    <option value=""selected hidden>--- 入出庫選択 ---</option>
-            <option value="入庫">入庫</option>
-            <option value="出庫">出庫</option>
-        </select>
-        <p class="mt-3">名前</p>
-        <div>
-            <input class="form-control w-100 mt-1" name="name" placeholder="" required>
+        <div class="mt-3">
+            <select name="taype" required>
+	       <option value=""selected hidden>--- 入出庫選択 ---</option>
+               <option value="入庫">入庫</option>
+               <option value="出庫">出庫</option>
+            </select>
         </div>
-        <p class="mt-3">腕立て</p>
-        <div>
-            <input class="form-control w-100 mt-1" name="udetate" required>
-        </div>
-        <p class="mt-3">腹筋</p>
-        <div>
-            <input class="form-control w-100 mt-1" name="fukkin" required>
-        </div>
-        <p class="mt-3">背筋</p>
-        <div>
-            <input class="form-control w-100 mt-1" name="haikin" required>
-        </div>
-        <p class="mt-3">スクワット</p>
-        <div>
-            <input class="form-control w-100 mt-1" name="sukuwat" required>
-        </div>
+　　　　<div style="display:flex;" >
+            <div style="width: 130px;">
+               <p>在庫名</p>
+               <select name="item" required>
+	          <option value=""selected hidden>--- 未選択 ---</option>
+                  <option value="1">ふじ</option>
+                  <option value="2">紅玉</option>
+                  <option value="3">王林</option>
+                  <option value="4">ジョナ</option>
+                  <option value="5">トキ</option>
+                  <option value="6">星の金貨</option>
+                  <option value="7">むつ</option>
+                  <option value="8">初恋ぐりん</option>
+                  <option value="9">こうとく</option>
+                </select>
+            </div>
+            <div>
+                <p>在庫数</p>
+                <input type="number" class="form-control w-100 mt-1" name="quantity" placeholder="" required>
+            </div>            
+            
+        </div>    
         <input type="submit" class="mt-4 btn btn-primary" value="送信">
     </form>
 
@@ -76,13 +80,12 @@
 
         $(function () {
             $('form').submit(function () {
-                const taype   = $('select[name="taype"]').val(); 
-                const name    = $('input[name="name"]').val();
-                const udetate = $('input[name="udetate"]').val();
-                const fukkin  = $('input[name="fukkin"]').val();
-                const haikin  = $('input[name="haikin"]').val();
-                const sukuwat = $('input[name="sukuwat"]').val();
-                const msg = `${taype}\n${name}\n${udetate}\n${fukkin}\n${haikin}\n${sukuwat}`;
+                const taype   = $('select[name="taype"]').val();
+                const item    = $('select[name="item"]').val();
+                const quantity= $('input[name="quantity"]').val();
+               
+                const msg = `${taype}\n${item}\n${quantity}`;
+window.alert(msg);
                 sendText(msg);
                 return false;
             });
