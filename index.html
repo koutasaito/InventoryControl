@@ -60,9 +60,13 @@
             <div>
                 <p>入出庫数</p>
                 <input type="number" class="form-control w-100 mt-1" name="quantity" placeholder="" required>
-            </div>            
-            
-        </div>    
+            </div>
+        </div>
+        <div style="display:flex;" >
+            <div style="width: 130px;">
+	        <textarea rows="5" cols="30" name="memo">メモ</textarea>
+            </div>
+        </div>
         <input type="submit" class="mt-4 btn btn-primary" value="送信">
     </form>
 
@@ -109,8 +113,9 @@
                 const item    = $('select[name="item"]').val();
                 const place   = $('select[name="place"]').val();
                 const quantity= $('input[name="quantity"]').val();
+                const memo    = $('textarea[name="memo"]').val();
                
-                const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}`;
+                const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}`;
 		//window.alert(msg);
                 sendText(msg);
                 return false;
