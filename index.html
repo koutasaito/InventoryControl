@@ -17,9 +17,33 @@
                <option value="出庫">出庫</option>
             </select>
         </div>
+
+　　　　<div style="display:flex;" >
+            <div style="width: 200px;">
+		<p>入出庫日</p>
+		<input type="datetime-local" id="cal" name="date">
+		<div id="current_date">
+		    <script>
+		        const now = new Date();
+  			now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+  			document.getElementById('cal').value = now.toISOString().slice(0, -8);
+    		    </script>
+		</div>
+	    </div>
+	</div>
+            <div style="width:150px;">
+　　　　　　　 <p>入出庫場所</p>
+	　　   <select name="place" required>
+	           <option value=""selected hidden>--- 未選択 ---</option>
+                   <option value="加工場">加工場</option>
+                   <option value="冷蔵庫(外)">冷蔵庫(外)</option>
+               </select>
+	    </div>
+
+
 　　　　<div style="display:flex;" >
             <div style="width: 130px;">
-               <p>在庫名</p>
+               <p>入出庫名</p>
                <select name="item" required>
 	          <option value=""selected hidden>--- 未選択 ---</option>
                   <option value="1">ふじ</option>
@@ -34,7 +58,7 @@
                 </select>
             </div>
             <div>
-                <p>在庫数</p>
+                <p>入出庫数</p>
                 <input type="number" class="form-control w-100 mt-1" name="quantity" placeholder="" required>
             </div>            
             
@@ -81,11 +105,13 @@
         $(function () {
             $('form').submit(function () {
                 const taype   = $('select[name="taype"]').val();
+		const date    = $('input[name="date"]').val().replace("T", " ");
                 const item    = $('select[name="item"]').val();
+                const place   = $('select[name="place"]').val();
                 const quantity= $('input[name="quantity"]').val();
                
-                const msg = `${taype}\n${item}\n${quantity}`;
-		//window.alert(msg);
+                const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}`;
+		window.alert(msg);
                 sendText(msg);
                 return false;
             });
