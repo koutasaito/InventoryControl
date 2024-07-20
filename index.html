@@ -15,7 +15,7 @@
                 <td  nowrap>入出庫選択</td>
                 <td>
                     <div style="margin:10px;">
-                        <select name="taype" required>
+                        <select name="taype" id="inOut" onchange="showTextbox()" required>
 	                    <option value=""selected hidden>--- 入出庫選択 ---</option>
                             <option value="入庫">入庫</option>
                             <option value="出庫">出庫</option>
@@ -171,7 +171,9 @@
 	    var trInput1 = document.getElementById("trInput1");
 	    var trInput2 = document.getElementById("trInput2");
 	    var trInput3 = document.getElementById("trInput3");
-            if (selectBox.value === "8") {
+	    var inOut =  document.getElementById("inOut");
+
+            if (selectBox.value == "8" && inOut.value == "出庫") {
                 trName1.style.display = "table-row";
                 trName2.style.display = "table-row";
                 trName3.style.display = "table-row";
