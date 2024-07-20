@@ -59,7 +59,7 @@
                 <td>入出庫名</td>
                 <td>
                     <div style="margin:10px;">
-                    <select name="item" required>
+                    <select name="item" id="show" onchange="showTextbox()" required>
 	                <option value=""selected hidden>--- 未選択 ---</option>
                         <option value="1">りんご</option>
                         <option value="2">一次加工梱包</option>
@@ -151,13 +151,9 @@
                             <option data-sel="8" value="821">プチパック トキ</option>
                             <option data-sel="8" value="822">プチパック 星の金貨</option>
                             <option data-sel="8" value="823">プチパック むつ</option>
-			    <option data-sel="8" value="824">プチパック 初恋ぐりん</option>
-                            <option data-sel="8" value="825">西目屋 ホワイト</option>
-                            <option data-sel="8" value="826">西目屋 はちみつ</option>
-                            <option data-sel="8" value="827">西目屋 コーヒー</option>
-			　　<option data-sel="8" value="828">三種のナッツ ハーブ</option>
-                            <option data-sel="8" value="829">三種のナッツ ジンジャー</option>
-                            <option data-sel="8" value="830">三種のナッツ コショウ</option>
+                            <option data-sel="8" value="824">西目屋 ホワイト</option>
+                            <option data-sel="8" value="825">西目屋 はちみつ</option>
+                            <option data-sel="8" value="826">西目屋 コーヒー</option>
                             <option data-sel="9" value="91">カシューナッツ</option>
                             <option data-sel="9" value="92">クルミ</option>
                             <option data-sel="9" value="93">アーモンド</option>
@@ -165,6 +161,51 @@
                     </div>
                 </td>
             </tr>
+    <script>
+        function showTextbox() {
+            var selectBox = document.getElementById("show");
+            var trName1 = document.getElementById("trName1");
+	　　var trName2 = document.getElementById("trName2");
+	　　var trName3 = document.getElementById("trName3");
+	    var trInput1 = document.getElementById("trInput1");
+	    var trInput2 = document.getElementById("trInput2");
+	    var trInput3 = document.getElementById("trInput3");
+            if (selectBox.value === "8") {
+                trName1.style.display = "table-row";
+                trName2.style.display = "table-row";
+                trName3.style.display = "table-row";
+		trInput1.style.display = "table-row";
+		trInput2.style.display = "table-row";
+		trInput3.style.display = "table-row";
+            } else {
+                trName1.style.display = "none";
+                trName2.style.display = "none";
+                trName3.style.display = "none";
+		trInput1.style.display = "none";
+		trInput2.style.display = "none";
+		trInput3.style.display = "none";
+            }
+        }
+    </script>
+	    <tr>
+		   <td id="trName1" style="display: none">包装OK数</td>
+                   <td>
+                        <input id="trInput1" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="okQuanity" placeholder="" value=0 required>
+                   </td>
+	    </tr>
+	    <tr>
+		   <td id="trName2" style="display: none">過量</td>
+                   <td>
+                        <input id="trInput2" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="overQuantity" placeholder="" value=0 required>
+                   </td>
+	    </tr>
+	    <tr>
+		   <td id="trName3" style="display: none">軽量</td>
+                   <td>
+                        <input id="trInput3" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="smallQuantity" placeholder="" value=0 required>
+                   </td>
+	    </tr>
+	    
             <tr>
                 <td>入出庫数</td>
                 <td>
@@ -227,8 +268,11 @@
                 const place   = $('select[name="place"]').val();
                 const quantity= $('input[name="quantity"]').val();
                 const memo    = $('textarea[name="memo"]').val().replace(/\r?\n/g," ");
-               
-                const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}`;
+		const okQuanity= $('input[name="okQuanity"]').val();
+		const overQuantity= $('input[name="overQuantity"]').val();
+		const smallQuantity= $('input[name="smallQuantity"]').val();               
+
+                const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}\n${okQuanity}\n${overQuantity}\n${smallQuantity}`;
 		//window.alert(msg);
                 sendText(msg);
                 return false;
@@ -247,8 +291,9 @@
             targetSelect.empty();
             targetOption.each(function(key, value){
                 if($(value).data('sel') == sel){
-                    targetSelect.append(value);
+                    targetSelect.append(value); 
                 }
+
             });
             targetSelect.prop('selectedIndex', 0); //最初の候補を選択に変更
         });
@@ -256,9 +301,12 @@
         //リロード時対策
         $('[name="item"]').trigger('change');
 
+
+        
 });
 
-    </script>
+
+</script>
 
 </body>
 </html>
