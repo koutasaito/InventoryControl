@@ -234,7 +234,7 @@
 	    <tr>
 		   <td id="trName5" style="display: none">シールNG</td>
                    <td>
-                        <input id="trInput5" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="si-ruQuantity" placeholder="" value=0 required>
+                        <input id="trInput5" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="si_ruQuantity" placeholder="" value=0 required>
                    </td>
 	    </tr>
 	    
@@ -304,9 +304,9 @@
 		const datusansoQuantity		 = $('input[name="datusansoQuantity"]').val();
 		const inziQuantity		 = $('input[name="inziQuantity"]').val();
 		const emptyQuantity		 = $('input[name="emptyQuantity"]').val();
-		const si-ruQuantity		 = $('input[name="si-ruQuantity"]').val();
+		const si_ruQuantity		 = $('input[name="si_ruQuantity"]').val();
 
-                const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}\n${small_over_Quanity}\n${datusansoQuantity}\n${inziQuantity}\n${emptyQuantity}\n${si-ruQuantity}`;
+                const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}\n${small_over_Quanity}\n${datusansoQuantity}\n${inziQuantity}\n${emptyQuantity}\n${si_ruQuantity}`;
 		//window.alert(msg);
                 sendText(msg);
                 return false;
