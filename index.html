@@ -171,44 +171,70 @@
             var trName1 = document.getElementById("trName1");
 	　　var trName2 = document.getElementById("trName2");
 	　　var trName3 = document.getElementById("trName3");
+	    var trName4 = document.getElementById("trName4");
+	    var trName5 = document.getElementById("trName5");
 	    var trInput1 = document.getElementById("trInput1");
 	    var trInput2 = document.getElementById("trInput2");
 	    var trInput3 = document.getElementById("trInput3");
+	    var trInput4 = document.getElementById("trInput4");
+	    var trInput5 = document.getElementById("trInput5");
 	    var inOut =  document.getElementById("inOut");
 
             if (selectBox.value == "8" && inOut.value == "出庫") {
                 trName1.style.display = "table-row";
                 trName2.style.display = "table-row";
                 trName3.style.display = "table-row";
+		trName4.style.display = "table-row";
+		trName5.style.display = "table-row";
 		trInput1.style.display = "table-row";
 		trInput2.style.display = "table-row";
 		trInput3.style.display = "table-row";
+		trInput4.style.display = "table-row";
+		trInput5.style.display = "table-row";
             } else {
                 trName1.style.display = "none";
                 trName2.style.display = "none";
                 trName3.style.display = "none";
+		trName4.style.display = "none";
+		trName5.style.display = "none";
 		trInput1.style.display = "none";
 		trInput2.style.display = "none";
 		trInput3.style.display = "none";
+		trInput4.style.display = "none";
+		trInput5.style.display = "none";
             }
         }
     </script>
 	    <tr>
-		   <td id="trName1" style="display: none">正量</td>
+		   <td id="trName1" style="display: none">軽量・過量</td>
                    <td>
-                        <input id="trInput1" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="okQuanity" placeholder="" value=0 required>
+                        <input id="trInput1" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="small_over_Quanity" placeholder="" value=0 required>
                    </td>
 	    </tr>
 	    <tr>
-		   <td id="trName2" style="display: none">過量</td>
+		   <td id="trName2" style="display: none">脱酸素剤NG</td>
                    <td>
-                        <input id="trInput2" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="overQuantity" placeholder="" value=0 required>
+                        <input id="trInput2" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="datusansoQuantity" placeholder="" value=0 required>
                    </td>
 	    </tr>
 	    <tr>
-		   <td id="trName3" style="display: none">軽量</td>
+		   <td id="trName3" style="display: none">印字不良</td>
                    <td>
-                        <input id="trInput3" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="smallQuantity" placeholder="" value=0 required>
+                        <input id="trInput3" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="inziQuantity" placeholder="" value=0 required>
+                   </td>
+	    </tr>
+
+	    <tr>
+		   <td id="trName4" style="display: none">空袋</td>
+                   <td>
+                        <input id="trInput4" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="emptyQuantity" placeholder="" value=0 required>
+                   </td>
+	    </tr>
+
+	    <tr>
+		   <td id="trName5" style="display: none">シールNG</td>
+                   <td>
+                        <input id="trInput5" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="si-ruQuantity" placeholder="" value=0 required>
                    </td>
 	    </tr>
 	    
@@ -268,17 +294,19 @@
 
         $(function () {
             $('form').submit(function () {
-                const taype   = $('select[name="taype"]').val();
-		const date    = $('input[name="date"]').val().replace("T", " ");
-                const item    = $('select[name="items"]').val();
-                const place   = $('select[name="place"]').val();
-                const quantity= $('input[name="quantity"]').val();
-                const memo    = $('textarea[name="memo"]').val().replace(/\r?\n/g," ");
-		const okQuanity= $('input[name="okQuanity"]').val();
-		const overQuantity= $('input[name="overQuantity"]').val();
-		const smallQuantity= $('input[name="smallQuantity"]').val();               
+                const taype  			 = $('select[name="taype"]').val();
+		const date   			 = $('input[name="date"]').val().replace("T", " ");
+                const item  			 = $('select[name="items"]').val();
+                const place  			 = $('select[name="place"]').val();
+                const quantity			 = $('input[name="quantity"]').val();
+                const memo   			 = $('textarea[name="memo"]').val().replace(/\r?\n/g," ");
+		const small_over_Quanity	 = $('input[name="small_over_Quanity"]').val();
+		const datusansoQuantity		 = $('input[name="datusansoQuantity"]').val();
+		const inziQuantity		 = $('input[name="inziQuantity"]').val();
+		const emptyQuantity		 = $('input[name="emptyQuantity"]').val();
+		const si-ruQuantity		 = $('input[name="si-ruQuantity"]').val();
 
-                const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}\n${okQuanity}\n${overQuantity}\n${smallQuantity}`;
+                const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}\n${small_over_Quanity}\n${datusansoQuantity}\n${inziQuantity}\n${emptyQuantity}\n${si-ruQuantity}`;
 		//window.alert(msg);
                 sendText(msg);
                 return false;
