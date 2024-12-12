@@ -274,7 +274,7 @@
                 <td id="trName8">入出庫数</td>
                 <td>
                     <div style="margin:10px;">
-                        <input id="trInput8" type="number" class="form-control w-50 mt-1" name="quantity" placeholder="" required>
+                        <input id="trInput8" type="number" class="form-control w-50 mt-1" name="quantity" placeholder="" value=0 required>
                     </div>
                 </td>
             </tr>
@@ -352,7 +352,7 @@
 		const emptyQuantity		 = $('input[name="emptyQuantity"]').val();		//空袋
 		const si_ruQuantity		 = $('input[name="si_ruQuantity"]').val();		//シールNG
 		const hokanQuantity		 = $('input[name="hokanQuantity"]').val();		//保管用
-
+		window.alert(item);
 		if(item != 8){
 		    const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}`;
 		}else{
