@@ -356,7 +356,9 @@
 		if(item != 8){
 		    const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}`;
 		}else{
-		    const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}\n${manufacr_Quanity}\n${small_over_Quanity}\n${datusansoQuantity}\n${inziQuantity}\n${emptyQuantity}\n${si_ruQuantity}`;
+		    var quanity_calc;
+		    quanity_calc = manufacr_Quanity + small_over_Quanity + datusansoQuantity + inziQuantity + emptyQuantity + si_ruQuantity + hokanQuantity;
+		    const msg = `${taype}\n${date}\n${item}\n${place}\n${quanity_calc}\n${memo}\n${manufacr_Quanity}\n${small_over_Quanity}\n${datusansoQuantity}\n${inziQuantity}\n${emptyQuantity}\n${si_ruQuantity}`;
 		}
                 
 		//window.alert(msg);
