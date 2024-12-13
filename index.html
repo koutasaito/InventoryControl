@@ -358,8 +358,13 @@
 		if($('select[name="item"]').val() != 8){
 		    msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}`;
 		}else{
-		    var quanity_calc;
-		    quanity_calc = manufacr_Quanity + small_over_Quanity + datusansoQuantity + inziQuantity + emptyQuantity + si_ruQuantity + hokanQuantity;
+		    var quanity_calc = Number(manufacr_Quanity) + 
+				       Number(small_over_Quanity) + 
+                                       Number(datusansoQuantity) + 
+                                       Number(inziQuantity) + 
+				       Number(emptyQuantity) + 
+				       Number(si_ruQuantity) + 
+				       Number(hokanQuantity);
 		    msg = `${taype}\n${date}\n${item}\n${place}\n${quanity_calc}\n${memo}\n${manufacr_Quanity}\n${small_over_Quanity}\n${datusansoQuantity}\n${inziQuantity}\n${emptyQuantity}\n${si_ruQuantity}`;
 		}
                 
