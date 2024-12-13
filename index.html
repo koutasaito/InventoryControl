@@ -171,62 +171,133 @@
             var trName1 = document.getElementById("trName1");
 	　　var trName2 = document.getElementById("trName2");
 	　　var trName3 = document.getElementById("trName3");
+	    var trName4 = document.getElementById("trName4");
+	    var trName5 = document.getElementById("trName5");
+	    var trName6 = document.getElementById("trName6");
+	    var trName7 = document.getElementById("trName7");
+	    var trName8 = document.getElementById("trName8");
+	    var trName9 = document.getElementById("trName9");
 	    var trInput1 = document.getElementById("trInput1");
 	    var trInput2 = document.getElementById("trInput2");
 	    var trInput3 = document.getElementById("trInput3");
+	    var trInput4 = document.getElementById("trInput4");
+	    var trInput5 = document.getElementById("trInput5");
+	    var trInput6 = document.getElementById("trInput6");
+	    var trInput7 = document.getElementById("trInput7");
+            var trInput8 = document.getElementById("trInput8");
 	    var inOut =  document.getElementById("inOut");
 
             if (selectBox.value == "8" && inOut.value == "出庫") {
                 trName1.style.display = "table-row";
                 trName2.style.display = "table-row";
                 trName3.style.display = "table-row";
+		trName4.style.display = "table-row";
+		trName5.style.display = "table-row";
+		trName6.style.display = "table-row";
+		trName7.style.display = "table-row";
+		trName8.style.display = "none";
+		trName9.style.display = "table-row";
 		trInput1.style.display = "table-row";
 		trInput2.style.display = "table-row";
 		trInput3.style.display = "table-row";
+		trInput4.style.display = "table-row";
+		trInput5.style.display = "table-row";
+		trInput6.style.display = "table-row";
+		trInput7.style.display = "table-row";
+		trInput8.style.display = "none";
             } else {
                 trName1.style.display = "none";
                 trName2.style.display = "none";
                 trName3.style.display = "none";
+		trName4.style.display = "none";
+		trName5.style.display = "none";
+		trName6.style.display = "none";
+		trName7.style.display = "none";
+		trName8.style.display = "table-row";
+		trName9.style.display = "none";
 		trInput1.style.display = "none";
 		trInput2.style.display = "none";
 		trInput3.style.display = "none";
+		trInput4.style.display = "none";
+		trInput5.style.display = "none";
+		trInput6.style.display = "none";
+		trInput7.style.display = "none";
+		trInput8.style.display = "table-row";
             }
         }
+
     </script>
 	    <tr>
-		   <td id="trName1" style="display: none">正量</td>
+		   <td id="trName1" style="display: none;">製造数</td>
                    <td>
-                        <input id="trInput1" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="okQuanity" placeholder="" value=0 required>
+                        <input id="trInput1" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-50 mt-1" name="manufacr_Quanity" placeholder="" value=0 required>
                    </td>
 	    </tr>
 	    <tr>
-		   <td id="trName2" style="display: none">過量</td>
+		   <td id="trName2" style="display: none">軽量・過量</td>
                    <td>
-                        <input id="trInput2" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="overQuantity" placeholder="" value=0 required>
+                        <input id="trInput2" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-50 mt-1" name="small_over_Quanity" placeholder="" value=0 required>
                    </td>
 	    </tr>
 	    <tr>
-		   <td id="trName3" style="display: none">軽量</td>
+		   <td id="trName3" style="display: none">脱酸素剤NG</td>
                    <td>
-                        <input id="trInput3" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-100 mt-1" name="smallQuantity" placeholder="" value=0 required>
+                        <input id="trInput3" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-50 mt-1" name="datusansoQuantity" placeholder="" value=0 required>
                    </td>
 	    </tr>
-	    
+	    <tr>
+		   <td id="trName4" style="display: none">印字不良</td>
+                   <td>
+                        <input id="trInput4" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-50 mt-1" name="inziQuantity" placeholder="" value=0 required>
+                   </td>
+	    </tr>
+
+	    <tr>
+		   <td id="trName5" style="display: none">空袋</td>
+                   <td>
+                        <input id="trInput5" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-50 mt-1" name="emptyQuantity" placeholder="" value=0 required>
+                   </td>
+	    </tr>
+	    <tr>
+		   <td id="trName6" style="display: none">シールNG</td>
+                   <td>
+                        <input id="trInput6" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-50 mt-1" name="si_ruQuantity" placeholder="" value=0 required>
+                   </td>
+	    </tr>
+	    <tr>
+		   <td id="trName7" style="display: none">保管用</td>
+                   <td>
+                        <input id="trInput7" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-50 mt-1" name="hokanQuantity" placeholder="" value=1 required>
+                   </td>
+	    </tr>
             <tr>
-                <td>入出庫数</td>
+                <td id="trName8">入出庫数</td>
                 <td>
-                    <div style="margin:10px; width: 130px;">
-                        <input type="number" class="form-control w-100 mt-1" name="quantity" placeholder="" required>
+                    <div style="margin:10px;">
+                        <input id="trInput8" type="number" class="form-control w-50 mt-1" name="quantity" placeholder="" value=0 required>
                     </div>
                 </td>
             </tr>
         </table>
+	<div id="trName9" style="display: none">
+	    <div style="display:flex;">
+	        <div style="width: 100px; display:block;">
+	            <div style="text-align:center;"><em>NG率</em></div>
+		    <div id="ngNo" style="text-align:center;"><em>0%</em></div>
+                </div>
+	　　    <div style="width: 100px; display:block;">
+	            <div style="text-align:center;"><em>合計使用枚数</em></div>
+	            <div id="total" style="text-align:center;"><em>0</em></div>
+                </div>
+	    </div>
+	</div>
 
         <div style="display:flex;" >
             <div style="width: 130px;">
 	        <textarea rows="5" cols="30" name="memo" placeholder="メモ"></textarea>
             </div>
         </div>
+
         <input type="submit" class="mt-4 btn btn-primary" value="送信">
     </form>
 
@@ -234,7 +305,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.22.3/sdk.js"></script>
     <script>
 
         $(document).ready(function () {
@@ -249,6 +320,7 @@
                 initializeApp();
             }).catch((err) => {
                 console.log('LIFF Initialization failed ', err);
+		//window.alert(err);
             });
         }
 
@@ -268,17 +340,30 @@
 
         $(function () {
             $('form').submit(function () {
-                const taype   = $('select[name="taype"]').val();
-		const date    = $('input[name="date"]').val().replace("T", " ");
-                const item    = $('select[name="items"]').val();
-                const place   = $('select[name="place"]').val();
-                const quantity= $('input[name="quantity"]').val();
-                const memo    = $('textarea[name="memo"]').val().replace(/\r?\n/g," ");
-		const okQuanity= $('input[name="okQuanity"]').val();
-		const overQuantity= $('input[name="overQuantity"]').val();
-		const smallQuantity= $('input[name="smallQuantity"]').val();               
+                const taype  			 = $('select[name="taype"]').val();
+		const date   			 = $('input[name="date"]').val().replace("T", " ");
+                const item  			 = $('select[name="items"]').val();
+                const place  			 = $('select[name="place"]').val();
+                const quantity			 = $('input[name="quantity"]').val();
+                const memo   			 = $('textarea[name="memo"]').val().replace(/\r?\n/g," ");
+		const manufacr_Quanity		 = $('input[name="manufacr_Quanity"]').val();		//製造数
+		const small_over_Quanity	 = $('input[name="small_over_Quanity"]').val();		//軽量・過量
+		const datusansoQuantity		 = $('input[name="datusansoQuantity"]').val();		//脱酸素剤NG
+		const inziQuantity		 = $('input[name="inziQuantity"]').val();		//印字不良
+		const emptyQuantity		 = $('input[name="emptyQuantity"]').val();		//空袋
+		const si_ruQuantity		 = $('input[name="si_ruQuantity"]').val();		//シールNG
+		const hokanQuantity		 = $('input[name="hokanQuantity"]').val();		//保管用
 
-                const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}\n${okQuanity}\n${overQuantity}\n${smallQuantity}`;
+		const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}`;
+
+		/*if(item != 8){
+		    const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}`;
+		}else{
+		    var quanity_calc;
+		    quanity_calc = manufacr_Quanity + small_over_Quanity + datusansoQuantity + inziQuantity + emptyQuantity + si_ruQuantity + hokanQuantity;
+		    const msg = `${taype}\n${date}\n${item}\n${place}\n${quanity_calc}\n${memo}\n${manufacr_Quanity}\n${small_over_Quanity}\n${datusansoQuantity}\n${inziQuantity}\n${emptyQuantity}\n${si_ruQuantity}`;
+		}*/
+                
 		//window.alert(msg);
                 sendText(msg);
                 return false;
@@ -311,6 +396,40 @@
         
 });
 
+	//NG率を表示する。
+	const trIn_1 = document.querySelector("#trInput1"); //製造数
+	const trIn_2 = document.querySelector("#trInput2"); //軽量・過量
+	const trIn_3 = document.querySelector("#trInput3"); //脱酸素剤NG
+	const trIn_4 = document.querySelector("#trInput4"); //印字不良
+	const trIn_5 = document.querySelector("#trInput5"); //空袋
+	const trIn_6 = document.querySelector("#trInput6"); //シールNG
+	const trIn_8 = document.querySelector("#trInput8"); //NG率
+	trIn_1.oninput = ng_Calc;
+        trIn_2.oninput = ng_Calc;
+        trIn_3.oninput = ng_Calc;
+        trIn_4.oninput = ng_Calc;
+        trIn_5.oninput = ng_Calc;
+        trIn_6.oninput = ng_Calc;
+
+	function ng_Calc(){
+  	    //trIn_8.textContent = x.value;
+	    var manufacr	= Number(document.getElementById("trInput1").value);
+	    var small_over	= Number(document.getElementById("trInput2").value);
+	　　var datusanso	= Number(document.getElementById("trInput3").value);
+	　　var inzi		= Number(document.getElementById("trInput4").value);
+	　　var empty		= Number(document.getElementById("trInput5").value);
+	　　var si_ru		= Number(document.getElementById("trInput6").value);
+	    var hokan		= Number(document.getElementById("trInput7").value);
+	    var ng		= document.getElementById("ngNo");
+	    var total		= document.getElementById("total");
+	    let ngtotal = (small_over + datusanso + inzi + empty + si_ru);
+	    
+	    if(ngtotal >= 1){
+                var ng_ritu = (ngtotal / manufacr) * 100;
+		ng.textContent = ng_ritu.toFixed(2) + "%";
+		total.textContent = (manufacr + ngtotal + hokan);
+	    }
+	}
 
 </script>
 
