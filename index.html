@@ -354,17 +354,16 @@
 		const si_ruQuantity		 = $('input[name="si_ruQuantity"]').val();		//シールNG
 		const hokanQuantity		 = $('input[name="hokanQuantity"]').val();		//保管用
 
+		var msg = "";
 		if($('select[name="item"]').val() != 8){
-		    const msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}`;
-		    //window.alert(msg);
+		    msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}`;
 		}else{
 		    var quanity_calc;
 		    quanity_calc = manufacr_Quanity + small_over_Quanity + datusansoQuantity + inziQuantity + emptyQuantity + si_ruQuantity + hokanQuantity;
-		    const msg = `${taype}\n${date}\n${item}\n${place}\n${quanity_calc}\n${memo}\n${manufacr_Quanity}\n${small_over_Quanity}\n${datusansoQuantity}\n${inziQuantity}\n${emptyQuantity}\n${si_ruQuantity}`;
-		    //window.alert(msg);
+		    msg = `${taype}\n${date}\n${item}\n${place}\n${quanity_calc}\n${memo}\n${manufacr_Quanity}\n${small_over_Quanity}\n${datusansoQuantity}\n${inziQuantity}\n${emptyQuantity}\n${si_ruQuantity}`;
 		}
                 
-		//window.alert(msg);
+		window.alert(msg);
                 sendText(msg);
                 return false;
             });
