@@ -355,7 +355,8 @@
 		const hokanQuantity		 = $('input[name="hokanQuantity"]').val();		//保管用
 
 		var msg = "";
-		if($('select[name="item"]').val() != 8){
+		//入庫または包装紙以外の時
+		if($('select[name="item"]').val() != 8　|| $('select[name="taype"]').val() == "入庫"){
 		    msg = `${taype}\n${date}\n${item}\n${place}\n${quantity}\n${memo}`;
 		}else{
 		    var quanity_calc = Number(manufacr_Quanity) + 
@@ -415,6 +416,7 @@
         trIn_5.oninput = ng_Calc;
         trIn_6.oninput = ng_Calc;
 
+	//NG率を表示する関数
 	function ng_Calc(){
   	    //trIn_8.textContent = x.value;
 	    var manufacr	= Number(document.getElementById("trInput1").value);
