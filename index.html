@@ -2,7 +2,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在庫管理 ver1.02</title>
+    <title>在庫管理 ver1.03</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
@@ -177,6 +177,7 @@
 	    var trName7 = document.getElementById("trName7");
 	    var trName8 = document.getElementById("trName8");
 	    var trName9 = document.getElementById("trName9");
+	    var trName10 = document.getElementById("trName10");
 	    var trInput1 = document.getElementById("trInput1");
 	    var trInput2 = document.getElementById("trInput2");
 	    var trInput3 = document.getElementById("trInput3");
@@ -185,6 +186,7 @@
 	    var trInput6 = document.getElementById("trInput6");
 	    var trInput7 = document.getElementById("trInput7");
             var trInput8 = document.getElementById("trInput8");
+	    var trInput10 = document.getElementById("trInput10");
 	    var inOut =  document.getElementById("inOut");
 
             if (selectBox.value == "8" && inOut.value == "出庫") {
@@ -197,6 +199,7 @@
 		trName7.style.display = "table-row";
 		trName8.style.display = "none";
 		trName9.style.display = "table-row";
+		trName10.style.display = "table-row";
 		trInput1.style.display = "table-row";
 		trInput2.style.display = "table-row";
 		trInput3.style.display = "table-row";
@@ -205,6 +208,7 @@
 		trInput6.style.display = "table-row";
 		trInput7.style.display = "table-row";
 		trInput8.style.display = "none";
+		trInput10.style.display = "table-row";
             } else {
                 trName1.style.display = "none";
                 trName2.style.display = "none";
@@ -215,6 +219,7 @@
 		trName7.style.display = "none";
 		trName8.style.display = "table-row";
 		trName9.style.display = "none";
+		trName10.style.display = "none";
 		trInput1.style.display = "none";
 		trInput2.style.display = "none";
 		trInput3.style.display = "none";
@@ -223,6 +228,7 @@
 		trInput6.style.display = "none";
 		trInput7.style.display = "none";
 		trInput8.style.display = "table-row";
+		trInput10.style.display = "none";
             }
         }
 
@@ -268,6 +274,12 @@
 		   <td id="trName7" style="display: none">保管用</td>
                    <td>
                         <input id="trInput7" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-50 mt-1" name="hokanQuantity" placeholder="" value=1 required>
+                   </td>
+	    </tr>
+	    <tr>
+		   <td id="trName10" style="display: none">差分</td>
+                   <td>
+                        <input id="trInput10" style="margin:10px; width: 130px; display: none;" type="number" class="form-control w-50 mt-1" name="sabunQuantity" placeholder="" value=0 required>
                    </td>
 	    </tr>
             <tr>
@@ -353,6 +365,7 @@
 		const emptyQuantity		 = $('input[name="emptyQuantity"]').val();		//空袋
 		const si_ruQuantity		 = $('input[name="si_ruQuantity"]').val();		//シールNG
 		const hokanQuantity		 = $('input[name="hokanQuantity"]').val();		//保管用
+		const sabunQuantity		 = $('input[name="sabunQuantity"]').val();		//差分用
 
 		var msg = "";
 		//入庫または包装紙以外の時
@@ -365,7 +378,8 @@
                                        Number(inziQuantity) + 
 				       Number(emptyQuantity) + 
 				       Number(si_ruQuantity) + 
-				       Number(hokanQuantity);
+				       Number(hokanQuantity) + 
+				       Number(sabunQuantity);
 		    msg = `${taype}\n${date}\n${item}\n${place}\n${quanity_calc}\n${memo}\n${manufacr_Quanity}\n${small_over_Quanity}\n${datusansoQuantity}\n${inziQuantity}\n${emptyQuantity}\n${si_ruQuantity}`;
 		}
                 
