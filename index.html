@@ -2,7 +2,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在庫管理 ver1.03</title>
+    <title>在庫管理 ver1.04</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
@@ -423,12 +423,15 @@
 	const trIn_5 = document.querySelector("#trInput5"); //空袋
 	const trIn_6 = document.querySelector("#trInput6"); //シールNG
 	const trIn_8 = document.querySelector("#trInput8"); //NG率
+	const trIn_10 = document.querySelector("#trInput10"); //差分
+
 	trIn_1.oninput = ng_Calc;
         trIn_2.oninput = ng_Calc;
         trIn_3.oninput = ng_Calc;
         trIn_4.oninput = ng_Calc;
         trIn_5.oninput = ng_Calc;
         trIn_6.oninput = ng_Calc;
+	trIn_10.oninput = ng_Calc;
 
 	//NG率を表示する関数
 	function ng_Calc(){
@@ -440,6 +443,7 @@
 	　　var empty		= Number(document.getElementById("trInput5").value);
 	　　var si_ru		= Number(document.getElementById("trInput6").value);
 	    var hokan		= Number(document.getElementById("trInput7").value);
+	    var sabun		= Number(document.getElementById("trInput10").value);
 	    var ng		= document.getElementById("ngNo");
 	    var total		= document.getElementById("total");
 	    let ngtotal = (small_over + datusanso + inzi + empty + si_ru);
@@ -447,7 +451,7 @@
 	    if(ngtotal >= 1){
                 var ng_ritu = (ngtotal / manufacr) * 100;
 		ng.textContent = ng_ritu.toFixed(2) + "%";
-		total.textContent = (manufacr + ngtotal + hokan);
+		total.textContent = (manufacr + ngtotal + hokan + sabun);
 	    }
 	}
 
