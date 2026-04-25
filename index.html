@@ -2,7 +2,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在庫管理 ver1.20</title>
+    <title>在庫管理 ver1.21</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
@@ -323,6 +323,10 @@
 	            <div style="text-align:center;"><em>合計使用枚数</em></div>
 	            <div id="total" style="text-align:center;"><em>0</em></div>
                 </div>
+                <div style="width: 100px; display:block;">
+	            <div style="text-align:center;"><em>現在の在庫数</em></div>
+	            <div id="currentStock" style="text-align:center;"><em>-</em></div>
+                </div>
 	    </div>
 	</div>
 
@@ -484,7 +488,7 @@
 
             // デバッグ用：正しく受け取れているか確認
             console.log("接続先GAS:", GAS_WEB_APP_URL);
-            window.alert(GAS_WEB_APP_URL);
+	    //window.alert(GAS_WEB_APP_URL);
 
             // 2. 商品名が変更された時の処理
             $('select[name="items"]').change(function() {
