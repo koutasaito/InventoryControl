@@ -2,7 +2,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在庫管理 ver1.13</title>
+    <title>在庫管理 ver1.20</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
@@ -476,6 +476,43 @@
 		total.textContent = (manufacr + ngtotal + hokan + sabun);
 	    }
 	}
+
+	$(function () {
+	    // 1. URLパラメータから GASウェブアプリURL を取得
+            const params = (new URL(document.location)).searchParams;
+    	    const GAS_WEB_APP_URL = params.get('gasUrl'); // ここでURLを受け取る
+
+            // デバッグ用：正しく受け取れているか確認
+            console.log("接続先GAS:", GAS_WEB_APP_URL);
+
+            // 2. 商品名が変更された時の処理
+            $('select[name="items"]').change(function() {
+                const itemId = $(this).val();
+
+                // GASのURLが取得できていない、または商品未選択なら何もしない
+                if (!GAS_WEB_APP_URL || itemId === "0") {
+                    $('#currentStock').text("-");
+                    return;
+                }
+
+                $('#currentStock').text("取得中...");
+
+                // 受け取ったGASのURLを使ってfetchを実行
+                fetch(`${GAS_WEB_APP_URL}?itemId=${itemId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        $('#currentStock').text(data.stock + " 枚");
+                    } else {
+                        $('#currentStock').text("エラー");
+                    }
+                })
+                .catch(error => {
+                    console.error("通信エラー:", error);
+                    $('#currentStock').text("通信失敗");
+                });
+            });
+        });
 
 </script>
 
