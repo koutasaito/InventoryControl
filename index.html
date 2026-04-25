@@ -488,7 +488,7 @@
 
             // デバッグ用：正しく受け取れているか確認
             console.log("接続先GAS:", GAS_WEB_APP_URL);
-	    //window.alert(GAS_WEB_APP_URL);
+	    window.alert(GAS_WEB_APP_URL);
 
             // 2. 商品名が変更された時の処理
             $('select[name="items"]').change(function() {
@@ -500,6 +500,7 @@
                     return;
                 }
 
+
                 $('#currentStock').text("取得中...");
 
                 // 受け取ったGASのURLを使ってfetchを実行
@@ -510,6 +511,7 @@
                         $('#currentStock').text(data.stock + " 枚");
                     } else {
                         $('#currentStock').text("エラー");
+			window.alert("エラー");
                     }
                 })
                 .catch(error => {
