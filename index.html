@@ -2,7 +2,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在庫管理 ver1.212</title>
+    <title>在庫管理 ver1.211</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
@@ -431,9 +431,8 @@
                 }
 
             });
+            targetSelect.prop('selectedIndex', 0); //最初の候補を選択に変更
         });
-
-	targetSelect.prop('selectedIndex', 0); //最初の候補を選択に変更
     
         //リロード時対策
         $('[name="item"]').trigger('change');
@@ -489,7 +488,7 @@
 
             // デバッグ用：正しく受け取れているか確認
             console.log("接続先GAS:", GAS_WEB_APP_URL);
-	    window.alert(GAS_WEB_APP_URL);
+	    //window.alert(GAS_WEB_APP_URL);
 
             // 2. 商品名が変更された時の処理
             $('select[name="items"]').change(function() {
