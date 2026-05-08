@@ -493,6 +493,7 @@
             // 2. 商品名が変更された時の処理
             $('select[name="items"]').change(function() {
                 const itemId = $(this).val();
+		window.alert(itemId);
 
                 // GASのURLが取得できていない、または商品未選択なら何もしない
                 if (!GAS_WEB_APP_URL || itemId === "0") {
