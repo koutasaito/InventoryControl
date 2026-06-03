@@ -2,7 +2,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在庫管理 ver1.211</title>
+    <title>在庫管理 ver1.14</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
@@ -182,6 +182,32 @@
 			    <option data-sel="10" value="102">クルミLMP</option>
 			    <option data-sel="10" value="103">クルミLHP</option>
 			    <option data-sel="10" value="104">カシューナッツ</option>
+			    <option data-sel="10" value="105">(自社・グランクラス) ハーブ アーモンド</option>
+			    <option data-sel="10" value="106">(自社・グランクラス) ハーブ  クルミ</option>
+			    <option data-sel="10" value="107">(自社・グランクラス) ハーブ カシューナッツ</option>
+			    <option data-sel="10" value="108">(自社・おやつタイムス)こしょう アーモンド</option>
+			    <option data-sel="10" value="109">(自社・おやつタイムス)こしょう クルミ</option>
+			    <option data-sel="10" value="1010">(自社・おやつタイムス)こしょう カシューナッツ</option>
+			    <option data-sel="10" value="1011">ジンジャー アーモンド</option>
+			    <option data-sel="10" value="1012">ジンジャー クルミ</option>
+			    <option data-sel="10" value="1013">ジンジャー カシューナッツ</option>
+			    <option data-sel="10" value="1014">(素焼き 紅玉ナッツ) アーモンド</option>
+			    <option data-sel="10" value="1015">(素焼き 紅玉ナッツ) クルミ</option>
+			    <option data-sel="10" value="1016">(素焼き 紅玉ナッツ) カシューナッツ</option>
+			    <option data-sel="10" value="1017">りんごとくるみ 素焼き</option>
+			    <option data-sel="10" value="1018">りんごとくるみ キャラメル</option>
+			    <option data-sel="10" value="1019">ノルテカルタ トマト アーモンド</option>
+			    <option data-sel="10" value="1020">ノルテカルタ トマト クルミ小</option>
+			    <option data-sel="10" value="1021">ノルテカルタ トマト カシューナッツ</option>
+			    <option data-sel="10" value="1022">ノルテカルタ ガラムマサラ アーモンド</option>
+			    <option data-sel="10" value="1023">ノルテカルタ ガラムマサラ クルミ</option>
+			    <option data-sel="10" value="1024">ノルテカルタ ガラムマサラ カシューナッツ</option>
+			    <option data-sel="10" value="1025">ノルテカルタ こしょう アーモンド</option>
+			    <option data-sel="10" value="1026">ノルテカルタ こしょう クルミ小</option>
+			    <option data-sel="10" value="1027">ノルテカルタ こしょう  カシューナッツ</option>
+			    <option data-sel="10" value="1028">ノルテカルタ トリュフ アーモンド</option>
+			    <option data-sel="10" value="1029">ノルテカルタ トリュフ クルミ小</option>
+			    <option data-sel="10" value="1030">ノルテカルタ トリュフ  カシューナッツ</option>
 			　　
                     </select>
                     </div>
@@ -322,10 +348,6 @@
 	　　    <div style="width: 100px; display:block;">
 	            <div style="text-align:center;"><em>合計使用枚数</em></div>
 	            <div id="total" style="text-align:center;"><em>0</em></div>
-                </div>
-                <div style="width: 100px; display:block;">
-	            <div style="text-align:center;"><em>現在の在庫数</em></div>
-	            <div id="currentStock" style="text-align:center;"><em>-</em></div>
                 </div>
 	    </div>
 	</div>
@@ -480,47 +502,6 @@
 		total.textContent = (manufacr + ngtotal + hokan + sabun);
 	    }
 	}
-
-	$(function () {
-	    // 1. URLパラメータから GASウェブアプリURL を取得
-            const params = (new URL(document.location)).searchParams;
-    	    const GAS_WEB_APP_URL = params.get('gasUrl'); // ここでURLを受け取る
-
-            // デバッグ用：正しく受け取れているか確認
-            console.log("接続先GAS:", GAS_WEB_APP_URL);
-	    //window.alert(GAS_WEB_APP_URL);
-
-            // 2. 商品名が変更された時の処理
-            $('select[name="items"]').change(function() {
-                const itemId = $(this).val();
-		window.alert(itemId);
-
-                // GASのURLが取得できていない、または商品未選択なら何もしない
-                if (!GAS_WEB_APP_URL || itemId === "0") {
-                    $('#currentStock').text("-");
-                    return;
-                }
-
-
-                $('#currentStock').text("取得中...");
-
-                // 受け取ったGASのURLを使ってfetchを実行
-                fetch(`${GAS_WEB_APP_URL}?itemId=${itemId}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === "success") {
-                        $('#currentStock').text(data.stock + " 枚");
-                    } else {
-                        $('#currentStock').text("エラー");
-			window.alert("エラー");
-                    }
-                })
-                .catch(error => {
-                    console.error("通信エラー:", error);
-                    $('#currentStock').text("通信失敗");
-                });
-            });
-        });
 
 </script>
 
